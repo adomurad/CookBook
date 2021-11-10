@@ -21,7 +21,6 @@ export default Post
 export async function getStaticProps(context: GetStaticPropsContext) {
   const id = String(context.params?.id);
   const page = await getPostPage(id);
-  console.log(JSON.stringify({ page: page }, null, 2))
   return {
     props: { page }, // will be passed to the page component as props
   }
