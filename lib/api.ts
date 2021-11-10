@@ -3,7 +3,7 @@ import { CONTENT_TYPE, IPost, LOCALE_CODE } from '../types/generated/contentful'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID || '', // TODO 
-  accessToken: process.env.CONTENTFUL_API_ACCESS_TOKEN || '', // TODO
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '', // TODO
 });
 
 type GetPageParams = {
