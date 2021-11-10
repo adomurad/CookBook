@@ -9,6 +9,7 @@
     "types": "contentful-typescript-codegen --output types/generated/contentful.d.ts"
   },
   "dependencies": {
+    "contentful": "^9.1.4",
     "contentful-management": "^7.45.0",
     "next": "12.0.3",
     "react": "17.0.2",
