@@ -1,5 +1,5 @@
 import { createClient, Entry } from 'contentful';
-import { CONTENT_TYPE, IPost, LOCALE_CODE } from '../types/generated/contentful';
+import { CONTENT_TYPE, IHomePage, IPost, LOCALE_CODE } from '../types/generated/contentful';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID || '', // TODO 
@@ -54,4 +54,12 @@ export async function getPostPage(id: string) {
     pageContentType: 'post',
     id: id,
   })
+}
+
+export async function getHomePage() {
+  const pages = await getPages<IHomePage>({
+    locale: 'en-US',
+    pageContentType: 'homePage',
+  })
+  return pages[0];
 }

@@ -1,12 +1,12 @@
 import type { GetStaticPropsContext, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { getPostPages } from '../lib/api'
+import { getHomePage, getPostPages } from '../lib/api'
 import styles from '../styles/Home.module.css'
-import { IPost } from '../types/generated/contentful'
+import { IHomePage, IPost } from '../types/generated/contentful'
 import { format } from 'date-fns'
 
-const Home: NextPage<{ pages: IPost[] }> = ({ pages }) => {
+const Home: NextPage<{ pages: IPost[], homePage: IHomePage }> = ({ pages, homePage }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +17,7 @@ const Home: NextPage<{ pages: IPost[] }> = ({ pages }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          🚧 This will be a CookBOOK! 🚧
+          {homePage.fields.header}
         </h1>
 
         <p className={styles.description}>
@@ -58,7 +58,8 @@ export default Home
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const pages = await getPostPages();
+  const homePage = await getHomePage();
   return {
-    props: { pages }, // will be passed to the page component as props
+    props: { pages, homePage }, // will be passed to the page component as props
   }
 }

@@ -3,6 +3,28 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IHomePageFields {
+  /** Header */
+  header: string;
+}
+
+export interface IHomePage extends Entry<IHomePageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "homePage";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IPostFields {
   /** name */
   name: string;
@@ -28,7 +50,7 @@ export interface IPost extends Entry<IPostFields> {
   };
 }
 
-export type CONTENT_TYPE = "post";
+export type CONTENT_TYPE = "homePage" | "post";
 
 export type LOCALE_CODE = "en-US";
 
